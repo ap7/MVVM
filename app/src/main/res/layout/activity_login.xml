@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.softbankrobotics.mvvm.ui.auth.AuthViewModel" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
@@ -65,6 +70,7 @@
 
                 <EditText
                     android:id="@+id/edit_text_email"
+                    android:text="@={viewmodel.email}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
@@ -77,6 +83,7 @@
 
                 <EditText
                     android:id="@+id/edit_text_password"
+                    android:text="@={viewmodel.password }"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="12dp"
@@ -97,6 +104,7 @@
                     android:textColor="@color/purple_700" />
 
                 <Button
+                    android:onClick="@={() -> viewmodel.onLoginButtonClick()}"
                     android:id="@+id/button_sign_in"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
