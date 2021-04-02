@@ -32,7 +32,8 @@ class NetworkConnectionInterceptor (context: Context
                     }
                 }
             } else {
-                //TODO("VERSION.SDK_INT < M")
+                val nwInfo = connectivityManager.activeNetworkInfo ?: return false
+                return nwInfo.isConnected
             }
         }
         return result
