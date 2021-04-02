@@ -21,6 +21,7 @@ interface AlbumApi {
                 .build()
 
             return Retrofit.Builder()
+                .client(okkHttpclient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://static.leboncoin.fr/img/shared/")
                 .build()
