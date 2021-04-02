@@ -10,13 +10,19 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softbankrobotics.mvvm.R
 import com.softbankrobotics.mvvm.data.models.Album
-import com.softbankrobotics.mvvm.data.network.AlbumApi
-import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
 import kotlinx.android.synthetic.main.album_fragment.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
-class AlbumFragment : Fragment(), RecyclerViewClickListener {
+class AlbumFragment : Fragment(), RecyclerViewClickListener, KodeinAware {
 
-    private lateinit var factory: AlbumsViewModelFactory
+    /**
+     * A Kodein Aware class must be within reach of a [Kodein] object.
+     */
+    override val kodein by kodein()
+    private val factory : AlbumsViewModelFactory by instance()
+
     private lateinit var viewModel: AlbumViewModel
 
     override fun onCreateView(
@@ -29,9 +35,6 @@ class AlbumFragment : Fragment(), RecyclerViewClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val api = AlbumApi()
-        val repository = AlbumRepository(api)
-        factory = AlbumsViewModelFactory(repository)
         viewModel = ViewModelProviders.of(this, factory).get(AlbumViewModel::class.java)
 
         viewModel.getAlbums()
