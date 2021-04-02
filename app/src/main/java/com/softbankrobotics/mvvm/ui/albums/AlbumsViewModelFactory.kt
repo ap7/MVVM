@@ -1,7 +1,8 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.ui.albums
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
 
 class AlbumsViewModelFactory(
     private val repository: AlbumRepository

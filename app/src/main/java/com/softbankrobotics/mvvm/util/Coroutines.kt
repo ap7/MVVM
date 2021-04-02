@@ -1,4 +1,4 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

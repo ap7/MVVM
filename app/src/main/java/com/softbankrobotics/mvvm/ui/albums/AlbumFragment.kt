@@ -1,4 +1,4 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.ui.albums
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.softbankrobotics.mvvm.R
+import com.softbankrobotics.mvvm.data.network.AlbumApi
+import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
 import kotlinx.android.synthetic.main.album_fragment.*
 
 class AlbumFragment : Fragment() {

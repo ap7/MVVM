@@ -1,4 +1,4 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.data.repositories
 
 import retrofit2.Response
 import java.io.IOException

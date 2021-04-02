@@ -78,9 +78,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha06"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha06"
 
-    implementation 'com.xwray:groupie:2.3.0'
-    implementation 'com.xwray:groupie-kotlin-android-extensions:2.3.0'
-    implementation 'com.xwray:groupie-databinding:2.3.0'
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation "androidx.preference:preference-ktx:1.1.1"
 }

@@ -1,4 +1,6 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.data.repositories
+
+import com.softbankrobotics.mvvm.data.network.AlbumApi
 
 class AlbumRepository(private val api: AlbumApi) : SafeApiRequest() {
 

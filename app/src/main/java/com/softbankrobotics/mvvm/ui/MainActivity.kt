@@ -1,8 +1,11 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.softbankrobotics.mvvm.R
+import com.softbankrobotics.mvvm.data.network.AlbumApi
+import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -1,8 +1,11 @@
-package com.softbankrobotics.mvvm
+package com.softbankrobotics.mvvm.ui.albums
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.softbankrobotics.mvvm.data.models.Album
+import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
+import com.softbankrobotics.mvvm.util.Coroutines
 import kotlinx.coroutines.Job
 
 // AlbumViewModel communicate with repository
@@ -17,7 +20,7 @@ class AlbumViewModel(private val repository: AlbumRepository) : ViewModel() {
     fun getAlbums() {
         job = Coroutines.ioThenMAin(
             { repository.getAlbums() },
-            {  _albums.value = it }
+            { _albums.value = it }
         )
 
     }
