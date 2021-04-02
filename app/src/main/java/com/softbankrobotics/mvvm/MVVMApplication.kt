@@ -2,6 +2,7 @@ package com.softbankrobotics.mvvm
 
 import android.app.Application
 import com.softbankrobotics.mvvm.data.network.AlbumApi
+import com.softbankrobotics.mvvm.data.network.NetworkConnectionInterceptor
 import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
 import com.softbankrobotics.mvvm.ui.albums.AlbumsViewModelFactory
 import org.kodein.di.Kodein
@@ -21,6 +22,7 @@ class MVVMApplication : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         import(androidXModule(this@MVVMApplication))
 
+        bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { AlbumApi(instance()) }
         bind() from singleton { AlbumRepository(instance()) }
         bind() from singleton { AlbumsViewModelFactory(instance()) }
