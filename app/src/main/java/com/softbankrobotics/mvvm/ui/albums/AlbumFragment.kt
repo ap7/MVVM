@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softbankrobotics.mvvm.R
 import com.softbankrobotics.mvvm.data.models.Album
+import com.softbankrobotics.mvvm.util.Coroutines
 import kotlinx.android.synthetic.main.album_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -37,14 +38,15 @@ class AlbumFragment : Fragment(), RecyclerViewClickListener, KodeinAware {
 
         viewModel = ViewModelProviders.of(this, factory).get(AlbumViewModel::class.java)
 
-        viewModel.getAlbums()
-        viewModel.albums.observe(viewLifecycleOwner, { albums ->
-            recycler_view_album.also {
-                it.layoutManager = LinearLayoutManager(requireContext())
-                it.setHasFixedSize(true)
-                it.adapter = AlbumAdapter(albums, this)
-            }
-        })
+        Coroutines.main {
+            viewModel.albums.await().observe(viewLifecycleOwner, { albums ->
+                recycler_view_album.also {
+                    it.layoutManager = LinearLayoutManager(requireContext())
+                    it.setHasFixedSize(true)
+                    it.adapter = AlbumAdapter(albums, this)
+                }
+            })
+        }
     }
 
     override fun onItemClick(view: View, album: Album) {

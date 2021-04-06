@@ -1,6 +1,8 @@
 package com.softbankrobotics.mvvm
 
 import android.app.Application
+import com.softbankrobotics.mvvm.data.PreferenceProvider
+import com.softbankrobotics.mvvm.data.db.AppDatabase
 import com.softbankrobotics.mvvm.data.network.AlbumApi
 import com.softbankrobotics.mvvm.data.network.NetworkConnectionInterceptor
 import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
@@ -16,7 +18,7 @@ class MVVMApplication : Application(), KodeinAware {
     /**
      * A Kodein Aware class must be within reach of a [Kodein] object.
      *
-     * LOOSELY COUPLKED CODE
+     * LOOSELY COUPLED CODE
      * EASY TO TESTING AFTER
      */
     override val kodein: Kodein = Kodein.lazy {
@@ -24,7 +26,9 @@ class MVVMApplication : Application(), KodeinAware {
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { AlbumApi(instance()) }
-        bind() from singleton { AlbumRepository(instance()) }
+        bind() from singleton { AppDatabase(instance()) }
+        bind() from singleton { PreferenceProvider(instance()) }
+        bind() from singleton { AlbumRepository(instance(), instance(), instance()) }
         bind() from singleton { AlbumsViewModelFactory(instance()) }
     }
 }

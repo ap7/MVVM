@@ -1,32 +1,16 @@
 package com.softbankrobotics.mvvm.ui.albums
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import com.softbankrobotics.mvvm.data.models.Album
 import com.softbankrobotics.mvvm.data.repositories.AlbumRepository
-import com.softbankrobotics.mvvm.util.Coroutines
-import kotlinx.coroutines.Job
+import com.softbankrobotics.mvvm.util.lazyDeferred
 
 // AlbumViewModel communicate with repository
+@RequiresApi(Build.VERSION_CODES.O)
 class AlbumViewModel(private val repository: AlbumRepository) : ViewModel() {
 
-    private lateinit var job: Job
-
-    private val _albums = MutableLiveData<List<Album>>()
-    val albums: LiveData<List<Album>>
-        get() = _albums
-
-    fun getAlbums() {
-        job = Coroutines.ioThenMAin(
-            { repository.getAlbums() },
-            { _albums.value = it }
-        )
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        if (::job.isInitialized) job.cancel()
+    val albums by lazyDeferred {
+        repository.getAlbums()
     }
 }

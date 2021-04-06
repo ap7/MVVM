@@ -1,6 +1,8 @@
 package com.softbankrobotics.mvvm.data.repositories
 
 import com.softbankrobotics.mvvm.util.ApiException
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Response
 
 abstract class SafeApiRequest {
@@ -9,6 +11,17 @@ abstract class SafeApiRequest {
         if (response.isSuccessful) {
             return response.body()!!
         } else {
+            val error = response.errorBody()?.string()
+            val message = StringBuilder()
+            error?.let {
+                try {
+                    message.append(JSONObject(it).getString("message"))
+                } catch(e: JSONException) {
+                    print(e.message)
+                }
+                message.append("\n")
+            }
+            message.append("Error Code: ${response.code()}")
             throw  ApiException(response.code().toString())
         }
     }
