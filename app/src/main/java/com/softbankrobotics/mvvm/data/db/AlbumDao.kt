@@ -11,7 +11,7 @@ import com.softbankrobotics.mvvm.data.models.Album
 interface AlbumDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllAlbums(album: List<Album>)
+    suspend fun insertAllAlbums(album: List<Album>)
 
     @Query("SELECT * FROM album")
     fun getAlbum() : LiveData<List<Album>>
