@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 import com.softbankrobotics.mvvm.R
 import com.softbankrobotics.mvvm.data.models.Album
 import com.softbankrobotics.mvvm.util.Coroutines
@@ -22,7 +23,7 @@ class AlbumFragment : Fragment(), RecyclerViewClickListener, KodeinAware {
      * A Kodein Aware class must be within reach of a [Kodein] object.
      */
     override val kodein by kodein()
-    private val factory : AlbumsViewModelFactory by instance()
+    private val factory: AlbumsViewModelFactory by instance()
 
     private lateinit var viewModel: AlbumViewModel
 
@@ -44,13 +45,14 @@ class AlbumFragment : Fragment(), RecyclerViewClickListener, KodeinAware {
                     it.layoutManager = LinearLayoutManager(requireContext())
                     it.setHasFixedSize(true)
                     it.adapter = AlbumAdapter(albums, this)
+                    it.adapter?.stateRestorationPolicy = PREVENT_WHEN_EMPTY
                 }
             })
         }
     }
 
     override fun onItemClick(view: View, album: Album) {
-        when(view.id) {
+        when (view.id) {
             R.id.imageView -> {
                 Toast.makeText(requireContext(), "Image clicked", Toast.LENGTH_LONG).show()
             }
