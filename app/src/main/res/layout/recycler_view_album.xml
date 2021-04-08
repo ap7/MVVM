@@ -15,6 +15,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_margin="3dp"
+            app:cardCornerRadius="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -31,46 +32,48 @@
                         app:image="@{album.url}"
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
-                        android:layout_height="195dp" />
+                        android:layout_height="195dp"
+                        android:contentDescription="@string/imageview" />
 
                     <RelativeLayout
-                        android:id="@+id/layout_like"
+                        android:id="@+id/layoutInfos"
                         android:paddingTop="3dp"
                         android:paddingBottom="3dp"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:layout_margin="15dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:background="@drawable/relativelayout_background"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:layout_marginRight="6dp"
+                            android:layout_marginEnd="6dp"
                             android:layout_marginTop="3dp"
-                            android:id="@+id/imageViewLike"
-                            android:background="@drawable/ic_like"
+                            android:id="@+id/imageViewTagInfo"
+                            android:background="@drawable/tag_info"
                             android:layout_width="15dp"
-                            android:layout_height="14dp"/>
+                            android:layout_height="14dp"
+                            android:contentDescription="@string/imageviewtaginfo" />
 
                         <TextView
-                            android:layout_toRightOf="@id/imageViewLike"
+                            android:layout_toEndOf="@id/imageViewTagInfo"
                             android:textSize="17sp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"
-                            android:id="@+id/textViewLikePercent"
+                            android:id="@+id/textViewAlbumId"
                             android:text="@{album.id}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <TextView
                             android:text="@{album.albumId}"
-                            android:textSize="10sp"
+                            android:textSize="14sp"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@id/textViewLikePercent"
+                            android:layout_below="@id/textViewAlbumId"
                             android:textColor="@android:color/white"
-                            android:id="@+id/textViewVotesCount"
+                            android:id="@+id/textViewId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
@@ -88,7 +91,7 @@
                     <TextView
                         android:id="@+id/textViewTitle"
                         android:textSize="18sp"
-                        android:textColor="#1A1A1A"
+                        android:textColor="@color/black"
                         android:text="@{album.title}"
                         tools:text="Lorem ipsum"
                         android:layout_width="wrap_content"

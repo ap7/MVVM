@@ -11,7 +11,7 @@ object Coroutines {
 
         CoroutineScope(Dispatchers.Main).launch {
             val data = CoroutineScope(Dispatchers.IO).async rt@{
-                retunr@ work()
+                work()
             }.await()
             callback(data)
         }
