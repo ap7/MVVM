@@ -1,0 +1,22 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+android: 
+   components:
+      - tools
+      - platform-tools
+      - tools
+      - build-tools-29.0.1
+      - android-29
+      - extra-android-m2repository
+      - sys-img-x86-android-29
+      - sys-img-armeabi-v7a-android-17
+#optional, use it if only you haven't give permission yet.
+#before_install:
+#   - chmod +x gradlew
+before_script:
+  - chmod +x gradlew
+script:
+  - ./gradlew clean
+  - ./gradlew assembleDebug
+  - ./gradlew assembleDebugAndroidTest
