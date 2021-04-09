@@ -1,9 +1,6 @@
 ### Hi there 👋, my name is Arhouston
-![App Logo](icon.png)
 
-# Leboncoin Test [![Build Status](https://travis-ci.org/ap7/MVVM.svg?branch=update-project)](https://travis-ci.org/ap7/MVVM.svg?branch=update-project) 
-https://travis-ci.org/ap7/MVVM.svg?branch=update-project
-
+# Leboncoin Test 
 
 
 This repository host a test project for [Leboncoin](https://www.leboncoin.fr/)
