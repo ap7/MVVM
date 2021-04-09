@@ -34,6 +34,7 @@ class AlbumFragment : Fragment(), RecyclerViewClickListener, KodeinAware {
         return inflater.inflate(R.layout.album_fragment, container, false)
     }
 
+    @Suppress("DEPRECATION")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

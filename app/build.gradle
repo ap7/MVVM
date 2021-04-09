@@ -99,6 +99,6 @@ dependencies {
         exclude module: 'recyclerview-v7'
     }
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-
+    implementation "org.awaitility:awaitility:3.1.1"
 
 }
